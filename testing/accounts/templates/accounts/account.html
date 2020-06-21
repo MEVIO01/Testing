@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm">
+
+		</div>
+		<div class="col-sm">
+		<div class="border rounded bg-white">
+					<div class="mb-4 mt-4 ml-4 mr-4">
+						<form class="form-signin" method="post">
+							{% csrf_token %}
+							<h2>Change personal data</h2>
+							<input type="email" name="email" id="inputEmail" class="form-control mb-3" placeholder="Email" required autofocus value="{{account_form.initial.email}}">
+							<input type="text" name="username" id="inputUsername" class="form-control mb-3" placeholder="Username" required autofocus value="{{account_form.initial.username}}">
+							{% for field in account_form %}
+								{% for error in field.errors %}
+									<p style="color: red;">{{error}}</p>
+								{% endfor %}
+							{% endfor %}
+
+							{% if account_form.non_field_errors %}
+								<div style="color: red;">
+									<p>{{account_form.non_field_errors}}</p>
+								</div>
+							{% endif %}
+							{% if success_message %}
+								<p class="text-success">{{success_message}}</p>
+							{% endif %}
+							<button type="submit" class="btn btn-success">
+								Save changes
+							</button>
+						</form>
+					</div>
+				</div>
+		</div>
+		<div class="col-sm">
+
+		</div>
+	</div>
+</div>
+{% endblock content %}

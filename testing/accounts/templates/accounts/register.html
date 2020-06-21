@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm">
+
+		</div>
+		<div class="col-sm">
+		<div class="border rounded bg-white">
+					<div class="mb-4 mt-4 ml-4 mr-4">
+						<form class="form-signin" method="post">
+							{% csrf_token %}
+							<h2>Registration</h2>
+							<input type="email" name="email" id="inputEmail" class="form-control mb-3" placeholder="Email" required autofocus>
+							<input type="text" name="username" id="inputUsername" class="form-control mb-3" placeholder="Username" required autofocus>
+							<input type="text" name="first_name" id="inputFirstName" class="form-control mb-3" placeholder="Name" required autofocus>
+							<input type="text" name="last_name" id="inputLastName" class="form-control mb-3" placeholder="Surname" required autofocus>
+							<input type="password" name="password1" id="inputPassword1" class="form-control mb-3" placeholder="Password" required autofocus>
+							<input type="password" name="password2" id="inputPassword2" class="form-control mb-3" placeholder="Confirm password" required autofocus>
+							{% for field in registration_form %}
+								{% for error in field.errors %}
+									<p style="color: red;">{{error}}</p>
+								{% endfor %}
+							{% endfor %}
+
+							{% if registration_form.non_field_errors %}
+								<div style="color: red;">
+									<p>{{registration_form.non_field_errors}}</p>
+								</div>
+							{% endif %}
+							<p>Do you already have an account ?</p>
+							<p><a href="{% url 'login' %}">Login</a></p>
+							<button type="submit" class="btn btn-success">
+								Register
+							</button>
+						</form>
+					</div>
+				</div>
+		</div>
+		<div class="col-sm">
+
+		</div>
+	</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="container">
+	<div class="border rounded bg-white">
+		<div class="mb-4 mt-4 ml-4 mr-4">
+			<h2 class="mb-2">My Profile</h2>
+			<p>
+				If you would like to change your personal info, please click
+				<a href="{% url 'account' %}">Change</a>
+			</p>
+			<table class="table">
+				<tbody>
+				<tr>
+					<th scope="col">
+						<h6 class="text-secondary">Email:</h6>
+					</th>
+					<th class="col">
+						<h5>{{user.email}}</h5>
+					</th>
+				</tr>
+				<tr>
+					<th scope="col">
+						<h6 class="text-secondary">Username:</h6>
+					</th>
+					<th class="col">
+						<h5>{{user.username}}</h5>
+					</th>
+				</tr>
+				<tr>
+					<th scope="col">
+						<h6 class="text-secondary">Name:</h6>
+					</th>
+					<th class="col">
+						<h5>{{user.first_name}}</h5>
+					</th>
+				</tr>
+				<tr>
+					<th scope="col">
+						<h6 class="text-secondary">Surname:</h6>
+					</th>
+					<th class="col">
+						<h5>{{user.last_name}}</h5>
+					</th>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock content %}

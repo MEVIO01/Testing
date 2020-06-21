@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<p>Hellow, {{request.user.username}}</p>
+<p>
+	<a href="{% url 'profile' %}">My Profile</a> |
+</p>
+{% endblock content %}
