@@ -13,7 +13,7 @@
 					<div class="mb-4 mt-4 ml-4 mr-4">
 						<form class="form-signin" method="post">
 							{% csrf_token %}
-							<h2>Вхід</h2>
+							<h2>Login</h2>
 							<input type="text" name="username" id="inputUsername" class="form-control mb-3" placeholder="UserName" required autofocus>
 							<input type="password" name="password" id="inputPassword" class="form-control mb-3" placeholder="Password" required autofocus>
 							{% for field in login_form %}
@@ -27,6 +27,8 @@
 									<p>{{login_form.non_field_errors}}</p>
 								</div>
 							{% endif %}
+							<p>Do not have an account ?</p>
+							<p><a href="{% url 'register' %}">Register</a></p>
 							<button type="submit" class="btn btn-success">
 								Sign In
 							</button>
