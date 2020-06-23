@@ -13,13 +13,14 @@ def registration_view(request):
             raw_password = form.cleaned_data.get('password1')
             account = authenticate(username=username, password=raw_password)
             login(request, account)
-            return redirect('home')
+            return redirect('profile')
         else:
             context['registration_form'] = form
     else:
         form = RegistrationForm()
         context['registration_form'] = form
     return render(request, 'accounts/register.html', context)
+
 
 
 def logout_view(request):
@@ -32,7 +33,7 @@ def login_view(request):
     user = request.user
 
     if user.is_authenticated:
-        return redirect('home')
+        return redirect('profile')
 
     if request.POST:
         form = AccountAuthenticationForm(request.POST)
@@ -42,13 +43,14 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user:
                 login(request, user)
-                return redirect('home')
+                return redirect('profile')
 
     else:
         form = AccountAuthenticationForm()
 
     context['login_form'] = form
     return render(request, 'accounts/login.html', context)
+
 
 
 def account_view(request):
@@ -79,7 +81,3 @@ def account_view(request):
 
 def profile_view(request):
     return render(request, 'accounts/profile.html')
-
-
-def home_view(request):
-    return render(request, 'accounts/home.html')
