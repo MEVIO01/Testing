@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from accounts.views import *
+from tests.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +25,5 @@ urlpatterns = [
     path('register/', registration_view, name="register"),
     path('account/', account_view, name="account"),
     path('profile/', profile_view, name="profile"),
+    path('available_tests/', tests_view, name="tests"),
 ]

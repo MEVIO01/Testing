@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="container">
+	<h2>Available Tests : </h2>
+	{% for test in tests %}
+		<p>{{test.title}}</p>
+	{% endfor %}
+</div>
+{% endblock %}
