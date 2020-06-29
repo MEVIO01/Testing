@@ -26,4 +26,5 @@ urlpatterns = [
     path('account/', account_view, name="account"),
     path('profile/', profile_view, name="profile"),
     path('available_tests/', tests_view, name="tests"),
+    path('available_tests/tests/<int:id>/questions/', questions_view, name="questions"),
 ]

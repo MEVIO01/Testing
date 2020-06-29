@@ -7,7 +7,7 @@
 	<h2 class="text-center">Available Tests</h2>
 	<hr>
 	{% for test in tests %}
-	<button type="button" class="btn btn-light btn-block">{{test.title}}</button>
+		<a class="btn btn-light btn-block" href="/available_tests/tests/{{test.id}}/questions/" role="button">{{test.title}}</a>
 	{% endfor %}
 </div>
 {% endblock %}
